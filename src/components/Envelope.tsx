@@ -76,6 +76,7 @@ const Envelope = () => {
       <div className="envelope">
         <div className="envelope-flap" />
         <div className="letter" onClick={handleLetterClick}>
+          <div className="letter-peek">tap to read</div>
           <div className="letter-content">
             <div className="letter-greeting">My Dearest Love,</div>
             <p className="letter-body">
@@ -85,10 +86,10 @@ const Envelope = () => {
             </p>
             <p className="letter-body">
               You constantly drift throughout my mind every day, causing me to smile when noone is around and keep me happy when I am feeling down.
-              I cannot wait to grow old with you, but before that happens, we have much to do
+              I cannot wait to grow old with you, but before that happens, we have much to do.
               Many places to see and explore, much food to eat and beer to drink!
-              We will fill the pages of our story with an abundance of love
-              You make my life everything I have every dreamed of
+              We will fill the pages of our story with an abundance of love.
+              You make my life everything I have every dreamed of.
             </p>
             <div className="letter-question">I'm yours, you're mine, will you be my Valentine?</div>
             <div className="letter-buttons">
@@ -102,7 +103,6 @@ const Envelope = () => {
         </div>
       </div>
       {!opened && <div className="tap-hint">tap to open</div>}
-      {opened && !fullscreen && <div className="tap-hint">tap the letter to read</div>}
     </div>
   )
 }
