@@ -8,7 +8,7 @@ const photos = Object.values(photoModules).map(m => m.default)
 
 const CYCLE_MS = 8000
 
-const PhotoBackground = () => {
+const PhotoBackground = ({ revealed }: { revealed: boolean }) => {
   const [active, setActive] = useState(0)
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const PhotoBackground = () => {
   if (photos.length === 0) return null
 
   return (
-    <div className="photo-bg">
+    <div className={`photo-bg ${revealed ? 'revealed' : ''}`}>
       {photos.map((src, i) => (
         <div
           key={src}
@@ -43,9 +43,12 @@ const PhotoBackground = () => {
           inset: -20px;
           background-size: cover;
           background-position: center;
-          filter: blur(12px) brightness(0.3) saturate(0.6);
+          filter: blur(10px) brightness(0.3) saturate(0.6);
           opacity: 0;
-          transition: opacity 2s ease-in-out;
+          transition: opacity 2s ease-in-out, filter 3s ease;
+        }
+        .photo-bg.revealed .photo-bg-img {
+          filter: blur(2px) brightness(0.35) saturate(0.8);
         }
       `}</style>
     </div>
