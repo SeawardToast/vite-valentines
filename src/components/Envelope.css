@@ -350,6 +350,10 @@
   justify-content: center;
 }
 
+.envelope-wrapper.fullscreen .envelope {
+  filter: none;
+}
+
 .envelope-wrapper.fullscreen .envelope-flap,
 .envelope-wrapper.fullscreen .envelope-body {
   opacity: 0;
@@ -360,10 +364,10 @@
 .envelope-wrapper.fullscreen .letter {
   position: fixed;
   top: 2vh;
-  bottom: 2vh;
   left: 50%;
   transform: translateX(-50%) rotate(-0.5deg);
   width: min(400px, 94vw);
+  height: 96vh;
   overflow-y: auto;
   padding: 56px 44px;
   border-radius: 2px;
