@@ -494,9 +494,11 @@
   }
 
   .envelope-wrapper.fullscreen .letter {
+    position: fixed;
     top: 3vh;
     left: 50%;
     transform: translateX(-50%) rotate(-0.5deg);
+    width: 90vw;
     min-height: unset;
     max-height: 92vh;
     padding: 36px 28px;
