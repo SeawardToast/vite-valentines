@@ -364,9 +364,6 @@
   left: 50%;
   transform: translateX(-50%) rotate(-0.5deg);
   width: min(400px, 94vw);
-  height: auto;
-  min-height: unset;
-  max-height: none;
   overflow-y: auto;
   padding: 56px 44px;
   border-radius: 2px;
