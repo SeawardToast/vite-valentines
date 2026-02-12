@@ -359,13 +359,14 @@
 
 .envelope-wrapper.fullscreen .letter {
   position: fixed;
-  top: 50%;
+  top: 2vh;
+  bottom: 2vh;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-0.5deg);
-  width: min(400px, 85vw);
+  transform: translateX(-50%) rotate(-0.5deg);
+  width: min(400px, 94vw);
   height: auto;
-  min-height: min(600px, 75vh);
-  max-height: 90vh;
+  min-height: unset;
+  max-height: none;
   overflow-y: auto;
   padding: 56px 44px;
   border-radius: 2px;
@@ -491,22 +492,6 @@
 
   .burst-heart {
     font-size: 18px;
-  }
-
-  .envelope-wrapper.opened.fullscreen .letter {
-    position: fixed;
-    top: 2vh;
-    bottom: 2vh;
-    left: 3vw;
-    right: 3vw;
-    width: auto;
-    height: auto;
-    min-height: unset;
-    max-height: none;
-    overflow-y: auto;
-    transform: rotate(-0.5deg);
-    padding: 36px 28px;
-    margin: 0;
   }
 
   .envelope-wrapper.opened.fullscreen .letter-greeting {
