@@ -493,29 +493,35 @@
     font-size: 18px;
   }
 
-  .envelope-wrapper.fullscreen .letter {
+  .envelope-wrapper.opened.fullscreen .letter {
     position: fixed;
+    inset: 0;
     top: 3vh;
-    left: 50%;
-    transform: translateX(-50%) rotate(-0.5deg);
-    width: 90vw;
+    bottom: 3vh;
+    left: 5vw;
+    right: 5vw;
+    width: auto;
+    height: auto;
     min-height: unset;
-    max-height: 92vh;
+    max-height: none;
+    overflow-y: auto;
+    transform: rotate(-0.5deg);
     padding: 36px 28px;
+    margin: 0;
   }
 
-  .envelope-wrapper.fullscreen .letter-greeting {
+  .envelope-wrapper.opened.fullscreen .letter-greeting {
     font-size: 28px;
     margin-bottom: 14px;
   }
 
-  .envelope-wrapper.fullscreen .letter-body {
+  .envelope-wrapper.opened.fullscreen .letter-body {
     font-size: 14px;
     line-height: 28px;
     margin-bottom: 20px;
   }
 
-  .envelope-wrapper.fullscreen .letter-question {
+  .envelope-wrapper.opened.fullscreen .letter-question {
     font-size: 22px;
     margin-bottom: 18px;
   }
