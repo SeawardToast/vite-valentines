@@ -1,13 +1,14 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import './Envelope.css'
 
 const BURST_COUNT = 18
 const BURST_EMOJIS = ['💕', '💖', '✨', '💗', '💝', '♥']
 
-const Envelope = () => {
+const Envelope = ({ onYes }: { onYes?: () => void }) => {
   const [opened, setOpened] = useState(false)
   const [fullscreen, setFullscreen] = useState(false)
   const [answered, setAnswered] = useState<'yes' | null>(null)
+  const [textFaded, setTextFaded] = useState(false)
   const [noStyle, setNoStyle] = useState<React.CSSProperties>({})
 
   const handleOpen = () => {
@@ -24,7 +25,8 @@ const Envelope = () => {
   const handleYes = useCallback((e: React.MouseEvent) => {
     e.stopPropagation()
     setAnswered('yes')
-  }, [])
+    onYes?.()
+  }, [onYes])
 
   const handleNo = useCallback((e: React.MouseEvent) => {
     e.stopPropagation()
@@ -35,6 +37,12 @@ const Envelope = () => {
       opacity: 0.5 + Math.random() * 0.3,
     })
   }, [])
+
+  useEffect(() => {
+    if (answered !== 'yes') return
+    const id = setTimeout(() => setTextFaded(true), 5000)
+    return () => clearTimeout(id)
+  }, [answered])
 
   const burstHearts = Array.from({ length: BURST_COUNT }, (_, i) => {
     const angle = (i / BURST_COUNT) * 360
@@ -58,7 +66,7 @@ const Envelope = () => {
             </span>
           ))}
         </div>
-        <div className="yes-response">
+        <div className={`yes-response ${textFaded ? 'faded' : ''}`}>
           <div className="yes-response-text">I knew you would! 💕</div>
         </div>
       </>
