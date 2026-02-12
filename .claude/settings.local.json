@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(if not exist \"c:\\\\Development\\\\vite-valentines\\\\src\\\\components\" mkdir \"c:\\\\Development\\\\vite-valentines\\\\src\\\\components\")",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)"
+    ]
+  }
+}
