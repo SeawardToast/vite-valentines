@@ -121,21 +121,74 @@
   left: 50%;
   transform: translateX(-50%);
   width: 250px;
-  background: linear-gradient(180deg, #fffaf5, #fff5ee);
-  border-radius: 6px;
-  padding: 30px 24px;
+  height: 80px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #faf6f0 60%, #f0e6d8 100%);
+  border-radius: 2px 2px 0 0;
+  padding: 0;
   z-index: 1;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
   transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
-              opacity 0.4s ease;
+              opacity 0.4s ease,
+              height 0.6s ease,
+              width 0.6s ease;
   opacity: 0;
   pointer-events: none;
 }
 
 .envelope-wrapper.opened .letter {
-  transform: translateX(-50%) translateY(-220px);
+  transform: translateX(-50%) translateY(-120px);
   opacity: 1;
   pointer-events: all;
+  cursor: pointer;
+}
+
+/* fold line across the peek */
+.envelope-wrapper.opened:not(.fullscreen) .letter::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+  height: 1px;
+  background: rgba(180, 160, 140, 0.3);
+  box-shadow: 0 1px 2px rgba(180, 160, 140, 0.1);
+}
+
+/* peek label */
+.letter-peek {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: 'Great Vibes', cursive;
+  font-size: 20px;
+  color: #9b7a8a;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.4s;
+  animation: peekPulse 2s ease-in-out infinite;
+}
+
+.envelope-wrapper.opened:not(.fullscreen) .letter-peek {
+  opacity: 1;
+}
+
+.envelope-wrapper.fullscreen .letter-peek {
+  display: none;
+}
+
+@keyframes peekPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* hide actual content in peek state */
+.envelope-wrapper.opened:not(.fullscreen) .letter-content {
+  opacity: 0;
+}
+
+.envelope-wrapper.fullscreen .letter-content {
+  opacity: 1;
 }
 
 /* ── Letter content ── */
@@ -305,6 +358,7 @@
   left: 50%;
   transform: translate(-50%, -50%) rotate(-0.5deg);
   width: min(400px, 85vw);
+  height: auto;
   min-height: min(600px, 75vh);
   max-height: 90vh;
   overflow-y: auto;
